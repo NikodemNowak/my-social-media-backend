@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Docelowa wersja JavaScript
+    "module": "CommonJS", // Moduł CommonJS (dla Node.js)
+    "outDir": "./dist", // Folder wyjściowy dla skompilowanych plików
+    "rootDir": ".", // Główny katalog źródłowy
+    "strict": true, // Włączenie ścisłego sprawdzania typów
+    "esModuleInterop": true, // Umożliwia importowanie modułów ES6 w stylu CommonJS
+    "skipLibCheck": true, // Pomija sprawdzanie typów w plikach definicji bibliotek
+    "forceConsistentCasingInFileNames": true // Wymusza spójność wielkości liter w nazwach plików
+  },
+  "include": [
+    "./**/*.ts" // Uwzględnia wszystkie pliki .ts w całym projekcie
+  ],
+  "exclude": [
+    "node_modules", // Wyklucza katalog node_modules
+    "dist" // Wyklucza folder wyjściowy (aby uniknąć pętli)
+  ]
+}

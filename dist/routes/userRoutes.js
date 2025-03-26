@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const userRepository_1 = require("../repositories/userRepository");
+const userService_1 = require("../services/userService");
+const userController_1 = require("../controllers/userController");
+const passwordHash_1 = require("../middlewares/passwordHash");
+const passwordValidation_1 = require("../middlewares/passwordValidation");
+const router = (0, express_1.Router)();
+const userRepository = new userRepository_1.UserRepository();
+const userService = new userService_1.UserService(userRepository);
+const userController = new userController_1.UserController(userService);
+router.post('/register', passwordValidation_1.passwordValidationMiddleware, passwordHash_1.passwordHashMiddleware, userController.register.bind(userController));
+router.post('/login', passwordValidation_1.passwordValidationMiddleware, userController.login.bind(userController));
+router.post('/refresh-access-token', userController.refreshToken.bind(userController));
+router.get('/:userId', userController.getUserProfile.bind(userController));
+exports.default = router;
